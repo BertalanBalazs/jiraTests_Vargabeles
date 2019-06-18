@@ -3,29 +3,14 @@ package com.codecool.bertalan.balazs.test;
 import com.codecool.bertalan.balazs.selenium.test.Day;
 import com.codecool.bertalan.balazs.selenium.test.TestFunction;
 import org.junit.Assert;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 
 class MyFirstTests {
-    static WebDriver driver;
 
     TestFunction testFunction = new TestFunction();
 
 
-    @BeforeAll
-    static void init() {
-        System.setProperty("webdriver.chrome.driver", "/home/bertalan/Desktop/codecool/downloads/chrome/chromedriver");
-        driver = new ChromeDriver();
-    }
-
-    @AfterAll
-    static void finish() {
-        driver.close();
-    }
 
     @Test
     void testNavigation() {
@@ -79,21 +64,21 @@ class MyFirstTests {
 
     @Test
     void testRadioButtons() {
-        driver.navigate().to("https://www.seleniumeasy.com/test/basic-radiobutton-demo.html");
+
 
         //First test
 
-        String resultOne = testFunction.getRadioButtonResult(".panel-body > div:nth-child(2) > .radio-inline:nth-child(2)", "div:nth-child(3) > .radio-inline:nth-child(2)");
+        String resultOne = testFunction.getRadioButtonResult("//input[1 and @name='gender' and @value='Male']", "//input[@value='0 - 5']");
         Assert.assertEquals(resultOne, "Sex : Male\n" +
                 "Age group: 0 - 5");
 
         //Second test
-        String resultTwo = testFunction.getRadioButtonResult(".panel-body > div:nth-child(2) > .radio-inline:nth-child(3)", "div:nth-child(3) > .radio-inline:nth-child(3)");
+        String resultTwo = testFunction.getRadioButtonResult("//input[1 and @name='gender' and @value='Female']", "//input[@value='5 - 15']");
         Assert.assertEquals(resultTwo, "Sex : Female\n" +
                 "Age group: 5 - 15");
 
         //Third test
-        String resultThree = testFunction.getRadioButtonResult(".panel-body > div:nth-child(2) > .radio-inline:nth-child(3)", "div:nth-child(3) > .radio-inline:nth-child(4)");
+        String resultThree = testFunction.getRadioButtonResult("//input[1 and @name='gender' and @value='Female']", "//input[@value='15 - 50']");
         Assert.assertEquals(resultThree, "Sex : Female\n" +
                 "Age group: 15 - 50");
     }
