@@ -3,14 +3,30 @@ package com.codecool.bertalan.balazs.test;
 import com.codecool.bertalan.balazs.selenium.test.Day;
 import com.codecool.bertalan.balazs.selenium.test.TestFunction;
 import org.junit.Assert;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 
 class MyFirstTests {
 
-    TestFunction testFunction = new TestFunction();
+    TestFunction testFunction;
+    private WebDriver driver;
+
+    @BeforeEach
+    void setUp() {
+        System.setProperty("webdriver.chrome.driver", "/home/bertalan/Desktop/codecool/downloads/chrome/chromedriver");
+        driver = new ChromeDriver();
+        testFunction = new TestFunction(driver);
+    }
 
 
+    @AfterEach
+    void finish() {
+        driver.close();
+    }
 
     @Test
     void testNavigation() {

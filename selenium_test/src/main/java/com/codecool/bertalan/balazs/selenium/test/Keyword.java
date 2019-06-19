@@ -3,25 +3,23 @@ package com.codecool.bertalan.balazs.selenium.test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Keyword {
-    static WebDriver driver;
+    private WebDriver driver;
 
-    public Keyword() {
-        System.setProperty("webdriver.chrome.driver", "/home/bertalan/Desktop/codecool/downloads/chrome/chromedriver");
-        driver = new ChromeDriver();
+    public Keyword(WebDriver driver) {
+        this.driver = driver;
     }
 
-    public void openWebsite(String url){
+    public void openWebsite(String url) {
         driver.navigate().to(url);
     }
 
-    public String getCurrentUrl(){
+    public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
 
-    public void clickOnElementBy(String xPath){
+    public void clickOnElementBy(String xPath) {
         driver.findElement(By.xpath(xPath)).click();
     }
 

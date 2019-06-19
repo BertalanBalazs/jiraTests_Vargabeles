@@ -1,14 +1,19 @@
 package com.codecool.bertalan.balazs.selenium.test;
 
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 
 public class TestFunction {
-    Keyword keyword = new Keyword();
+    Keyword keyword;
+
+    public TestFunction(WebDriver driver) {
+        keyword = new Keyword(driver);
+    }
 
 
     public String getUrl() {
         keyword.openWebsite("https://www.seleniumeasy.com/test/");
-        keyword.clickOnElementBy("//li[@class='dropdown open']/a[@class='dropdown-toggle' and 1 and @href='#']");
+        keyword.clickOnElementBy("//*[@id=\"navbar-brand-centered\"]/ul[1]/li[1]/a");
         keyword.clickOnElementBy("//ul[@class='dropdown-menu']/li[1]/a[1 and @href='./basic-first-form-demo.html']");
         return keyword.getCurrentUrl();
     }
