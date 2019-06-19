@@ -1,4 +1,4 @@
-package com.codecool.bertalan.balazs.selenium.test;
+package com.codecool.bertalan.balazs.selenium.test.DayEnum;
 
 public enum Day {
     MON,
