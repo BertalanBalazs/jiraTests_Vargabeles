@@ -108,8 +108,8 @@ class MyFirstTests {
     @Test
     void testDatePickerBootstrap() {
         BootstrapDatePickerDemo bootstrapDatePickerDemo = new BootstrapDatePickerDemo(driver);
-        int date = bootstrapDatePickerDemo.testDatePickerBootstrap(2007, 12, 8);
-        Assert.assertEquals(Day.SAT, Day.values()[date - 1]);
+        int date = bootstrapDatePickerDemo.testDatePickerBootstrap(2019, 01, 14);
+        Assert.assertEquals(Day.MON, Day.values()[date - 1]);
     }
 
     @Test
