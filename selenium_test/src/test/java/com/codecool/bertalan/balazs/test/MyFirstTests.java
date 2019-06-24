@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -112,10 +114,12 @@ class MyFirstTests {
         Assert.assertEquals(Day.MON, Day.values()[date - 1]);
     }
 
+    @ParameterizedTest
+    @CsvFileSource(resources = "/home/bertalan/Desktop/codecool/Test_Branch/2.week/selenium_test/src/test/resources/Text.csv", numLinesToSkip = 1)
     @Test
-    void testSortAndSearchDemo() {
+    void testSortAndSearchDemo(String url) {
         TableSortSearchDemo tableSortSearchDemo = new TableSortSearchDemo(driver);
-        int numOfSumAge = tableSortSearchDemo.getNumOfSumAge();
+        int numOfSumAge = tableSortSearchDemo.getNumOfSumAge(url);
         Assert.assertEquals(numOfSumAge, 1164);
     }
 }

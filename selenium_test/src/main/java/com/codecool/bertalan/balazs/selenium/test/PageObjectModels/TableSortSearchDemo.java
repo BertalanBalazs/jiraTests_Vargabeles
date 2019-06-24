@@ -8,9 +8,9 @@ public class TableSortSearchDemo extends TestFunction {
         this.driver = webDriver;
     }
 
-    public int getNumOfSumAge() {
+    public int getNumOfSumAge(String url) {
         int result = 0;
-        driver.navigate().to("https://www.seleniumeasy.com/test/table-sort-search-demo.html");
+        driver.navigate().to(url);
         driver.findElement(By.cssSelector(".sorting:nth-child(4)")).click();
         driver.findElement(By.cssSelector(".sorting_asc")).click();
         driver.findElement(By.cssSelector("#example_length > label > select")).click();
